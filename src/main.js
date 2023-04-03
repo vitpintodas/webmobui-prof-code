@@ -1,27 +1,27 @@
-import { computed, ref, watch } from 'vue';
+import { createApp } from 'vue'
+import App from './App.vue'
 
-const ageMajority = 18;
+createApp(App).mount('#app')
 
-const x = ref(2);
+// import { computed, ref, watch } from 'vue';
 
-const y = computed(() => x.value + 2);
-const z = computed(() => y.value * 2);
+// const ageMajority = 18;
 
-watch(x, () => {
-  localStorage.setItem('x', x.value);
-})
+// const x = ref(2);
 
-x.value = 3;
+// const y = computed(() => x.value + 2);
+// const z = computed(() => y.value * 2);
 
-setTimeout(() => {
-  x.value = 4;
-}, 10000);
+// watch(x, () => {
+//   localStorage.setItem('x', x.value);
+// })
 
-console.log(x.value); // 2
-console.log(y.value); // 4
+// x.value = 3;
 
- // import { createApp } from 'vue'
-// import './style.css'
-// import App from './App.vue'
+// setTimeout(() => {
+//   x.value = 4;
+// }, 10000);
 
-// createApp(App).mount('#app')
+// console.log(x.value); // 2
+// console.log(y.value); // 4
+
