@@ -5,27 +5,17 @@ const baseV = ref(0);
 const mbValue = computed(() => baseV.value / 1000000);
 const kbValue = computed(() => baseV.value / 1000);
 
-// const hello = "world";
-
-// function toChf(amount) {
-//   return `CHF ${amount}`;
-// }
-
-// const amount = ref(0);
-
-function updateBaseV(event) {
-  baseV.value = event.target.value;
+function updateBaseV(val, factor = 1) {
+  baseV.value = val * factor;
 }
 
 </script>
 
 <template>
-  <label>B</label>
-  <input type="number" :value="baseV" @input="updateBaseV($event)"/>
   <label>MB</label>
-  <input type="number" :value="mbValue"/>
+  <input type="number" :value="mbValue" @input="updateBaseV($event.target.value, 1000000)"/>
   <label>KB</label>
-  <input type="number" :value="kbValue"/>
+  <input type="number" :value="kbValue" @input="updateBaseV($event.target.value, 1000)"/>
 </template>
 
 <style scoped>
