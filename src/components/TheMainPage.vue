@@ -1,15 +1,17 @@
 <script setup>
 import BaseMessage from './base/BaseMessage.vue'
-import BaseInput from './base/BaseInput.vue'
+import BaseInputNumber from './base/BaseInputNumber.vue'
 import { computed, ref } from 'vue'
 
 const kelvin = ref(0);
-const celcius = computed(() => kelvin.value - 273.15);
-
-// setTimeout(() => {
-//   kelvin.value = 100;
-// }, 2000);
-
+const celcius = computed({
+  get() {
+    return kelvin.value - 273.15;
+  },
+  set(value) {
+    kelvin.value = value + 273.15;
+  }
+});
 
 </script>
 
@@ -21,18 +23,21 @@ const celcius = computed(() => kelvin.value - 273.15);
     Application will be in maintenance ...
   </base-message>
   <!-- <base-input
-
     label="Kelvin"
     unit="K"
     :modelValue="kelvin"
     @update:modelValue="changeKelvin($event)"
   /> -->
-  <base-input
+  <base-input-number
+    v-model="kelvin"
     label="Kelvin"
     unit="K"
-    v-model="kelvin"
   />
-  <base-input :modelValue="celcius" label="celcius" />
+  <base-input-number
+    label="celcius"
+    unit="°C"
+    v-model="celcius"
+  />
   <p>Hello</p>
 </template>
 
