@@ -3,6 +3,7 @@ import BaseMessage from './base/BaseMessage.vue'
 import BaseInputNumber from './base/BaseInputNumber.vue'
 import { computed, ref } from 'vue'
 
+const decimalPlaces = 2;
 const kelvin = ref(0);
 const celcius = computed({
   get() {
@@ -32,13 +33,14 @@ const celcius = computed({
     v-model="kelvin"
     label="Kelvin"
     unit="K"
+    :decimal-places="decimalPlaces"
   />
   <base-input-number
+    v-model="celcius"
     label="celcius"
     unit="°C"
-    v-model="celcius"
+    :decimal-places="decimalPlaces"
   />
-  <p>Hello</p>
 </template>
 
 <style scoped>
