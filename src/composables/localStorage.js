@@ -1,20 +1,29 @@
 import { ref, watch } from "vue";
 
+function saveInStorage(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
+}
+
 export function  useLocalStorage(key, defaultValue = null) {
   let data = localStorage.getItem(key);
 
+  // if the key does not exist, create it with the default value
   if (data === null) {
     data = defaultValue;
-    localStorage.setItem(key, JSON.stringify(data));
+    saveInStorage(key, data);
   } else {
-    data = JSON.parse(data);
+    try {
+      data = JSON.parse(data);
+    } catch (e) {
+      console.warn("Value in localStorage is not valid JSON, falling back to default value");
+      data = defaultValue;
+      saveInStorage(key, data);
+    }
   }
 
   const value = ref(data);
 
-  watch(value, () => {
-    localStorage.setItem(key, JSON.stringify(value.value));
-  }, { deep: true });
+  watch(value, () => saveInStorage(key, value.value), { deep: true });
 
   return {value};
 }

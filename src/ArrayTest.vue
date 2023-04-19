@@ -1,11 +1,10 @@
 <script setup>
-import { ref, watch } from "vue";
-import { useLocalStorage } from "./composables/localStorage.js";
+  import { useLocalStorage } from "./composables/localStorage.js";
 
-// mock data for a Todo List
-const {value: todoList} = useLocalStorage('todoList', []);
+  // mock data for a Todo List
+  const {value: todoList} = useLocalStorage('todoList', []);
 
-const {value: search} = useLocalStorage('search', '');
+  const {value: search} = useLocalStorage('search', '');
 
   // add a new todo item
   setTimeout(() => {
