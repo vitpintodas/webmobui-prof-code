@@ -1,4 +1,4 @@
-import { ref, unref, watch } from 'vue';
+import { isRef, ref, unref, watch } from 'vue';
 
 export function useFetchJson(url) {
 
@@ -13,10 +13,11 @@ export function useFetchJson(url) {
 
   fetchJson(unref(url));
 
-  // check if url is a ref
-  watch(url, () => {
-    fetchJson(unref(url));
-  });
+  if (isRef(url)) {
+    watch(url, () => {
+      fetchJson(unref(url));
+    });
+  }
 
   return {data};
 }
