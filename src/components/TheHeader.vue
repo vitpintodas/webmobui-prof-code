@@ -1,10 +1,22 @@
 <script setup>
 
+import { onMounted, onUnmounted } from 'vue'
+
+const x = 7;
+
+function update(event) {
+  console.log('update', event.pageX, event.pageY)
+}
+
+onMounted(() => window.addEventListener('mousemove', update))
+onUnmounted(() => window.removeEventListener('mousemove', update))
+
+
 </script>
 
 <template>
   <header>
-    Webmobui
+    <slot></slot>
   </header>
 </template>
 
