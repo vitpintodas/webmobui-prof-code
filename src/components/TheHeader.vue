@@ -11,7 +11,6 @@ function update(event) {
 onMounted(() => window.addEventListener('mousemove', update))
 onUnmounted(() => window.removeEventListener('mousemove', update))
 
-
 </script>
 
 <template>
