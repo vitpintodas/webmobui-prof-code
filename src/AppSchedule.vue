@@ -7,14 +7,11 @@
   const url = computed(() => `https://chabloz.eu/files/horaires/all?page=${pageNb.value}`);
 
   const { data: schedule } = useFetchJson(url);
+  // const { data: messages } = useFetchJson('/ws/chat/msg/get');
   const showHeader = ref(false);
-
-
 </script>
 
 <template>
-
-
 
   <the-header v-if="showHeader">Horaire IM</the-header>
   <button @click="showHeader = !showHeader">toggle header</button>

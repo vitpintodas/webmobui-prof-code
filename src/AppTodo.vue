@@ -7,6 +7,7 @@
   import { page } from './stores/tasks.js';
 
   const dynamicComponent = ref('the-tasks-form-add');
+  
 
 </script>
 

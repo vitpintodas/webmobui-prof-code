@@ -1,15 +1,15 @@
 <script setup>
 
-import { onMounted, onUnmounted } from 'vue'
+// import { onMounted, onUnmounted } from 'vue'
 
-const x = 7;
+// const x = 7;
 
-function update(event) {
-  console.log('update', event.pageX, event.pageY)
-}
+// function update(event) {
+//   console.log('update', event.pageX, event.pageY)
+// }
 
-onMounted(() => window.addEventListener('mousemove', update))
-onUnmounted(() => window.removeEventListener('mousemove', update))
+// onMounted(() => window.addEventListener('mousemove', update))
+// onUnmounted(() => window.removeEventListener('mousemove', update))
 
 </script>
 
