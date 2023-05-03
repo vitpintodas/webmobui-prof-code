@@ -1,6 +1,6 @@
 <script setup>
   import { ref } from 'vue';
-import { remove } from '../../stores/bookmarks.js';
+  import { remove } from '../../stores/bookmarks.js';
   import BookmarkForm from './BookmarkForm.vue';
 
   defineProps({
